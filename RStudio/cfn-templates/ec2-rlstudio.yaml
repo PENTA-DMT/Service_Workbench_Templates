@@ -18,7 +18,7 @@ Parameters:
     Description: Amazon Machine Image for the EC2 instance
   EBSVolumeSize:
     Type: Number
-    Description: The size of the EBS volume in GB (Default: 100)
+    Description: The size of the EBS volume in GB (Default 100)
     Default: 100
   IsAppStreamEnabled:
     Type: String
