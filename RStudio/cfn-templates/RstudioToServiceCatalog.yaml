@@ -14,7 +14,7 @@ Resources:
   RStudiocft:
     Type: 'AWS::ServiceCatalog::CloudFormationProduct'
     Properties:
-      Name: EC2-RStudio-Server
+      Name: EC2-RStudio-Server-Penta
       AcceptLanguage: en
       Distributor: RL
       Owner: RL
@@ -22,7 +22,7 @@ Resources:
       ProvisioningArtifactParameters:
         - Name: v1
           Description: >
-               An RStudio instance accessible over SSL which comes with: 
+               A Penta customized RStudio instance accessible over SSL which comes with: 
                 * RStudio Server version 1.4.1717
                 * Connect securely via load balancer using Amazon issued certificates in ACM
                 * Fully loaded with commonly used R packages.
