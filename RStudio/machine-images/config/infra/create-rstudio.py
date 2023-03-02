@@ -89,7 +89,7 @@ def formRoleName():
             solutionName = configuration['solutionName']
             commonName = fileName + '-' + regionShortName +'-'+ solutionName
             roleName = commonName + '-LaunchConstraint'
-            stackName = commonName + '-penta-rlrstudio'
+            stackName = commonName + '-rlrstudio-penta'
     return roleName, stackName, commonName
 
 def getPortfolioIdUsingRoleName(roleName):
