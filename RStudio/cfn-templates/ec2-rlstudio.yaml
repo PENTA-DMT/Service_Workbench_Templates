@@ -16,6 +16,9 @@ Parameters:
   AmiId:
     Type: String
     Description: Amazon Machine Image for the EC2 instance
+  EBSVolumeSize:
+    Type: Number
+    Description: The size of the EBS volume in GB
   IsAppStreamEnabled:
     Type: String
     AllowedValues: [true, false]
@@ -212,7 +215,7 @@ Resources:
       BlockDeviceMappings:
         - DeviceName: /dev/xvda
           Ebs:
-            VolumeSize: 8
+            VolumeSize: !Ref EBSVolumeSize
             Encrypted: true
             KmsKeyId: !Ref EncryptionKeyArn
 
