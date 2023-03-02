@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
+# Set the machine timezone to UTC
+sudo timedatectl set-timezone UTC
+
 # Various development packages needed to compile R
 sudo yum install -y gcc-7.3.* gcc-gfortran-7.3.* gcc-c++-7.3.*
 sudo yum install -y java-1.8.0-openjdk-devel-1.8.0.*
 sudo yum install -y readline-devel-6.2 zlib-devel-1.2.* bzip2-devel-1.0.* xz-devel-5.2.* pcre-devel-8.32
-sudo yum install -y libcurl-devel-7.79.1 libpng-devel-1.5.* cairo-devel-1.15.* pango-devel-1.42.*
+sudo yum install -y libcurl-devel-7.* libpng-devel-1.5.* cairo-devel-1.15.* pango-devel-1.42.*
 sudo yum install -y xorg-x11-server-devel-1.20.* libX11-devel-1.6.* libXt-devel-1.1.*
 
 # Install R from source (https://docs.rstudio.com/resources/install-r-source/)
-R_VERSION="4.1.3"
+R_VERSION="4.2.2"
 mkdir -p "/tmp/R/"
 curl -s "https://cran.r-project.org/src/base/R-4/R-${R_VERSION}.tar.gz" > "/tmp/R/R-${R_VERSION}.tar.gz"
 cd "/tmp/R/"
@@ -20,7 +23,8 @@ sudo make install
 cd "../../.."
 
 # Install RStudio
-rstudio_rpm="rstudio-server-rhel-1.4.1717-x86_64.rpm"
+mkdir -p "/tmp/rstudio/"
+rstudio_rpm="rstudio-server-rhel-2022.12.0-353-x86_64.rpm"
 curl -s "https://download2.rstudio.org/server/centos7/x86_64/${rstudio_rpm}" > "/tmp/rstudio/${rstudio_rpm}"
 sudo yum install -y "/tmp/rstudio/${rstudio_rpm}"
 sudo systemctl enable rstudio-server
@@ -100,14 +104,26 @@ sudo yum install -y unixODBC-devel-2.3.*                      # ODBC API client
 sudo yum install -y gmp-devel-6.0.*                           # GNU MP arbitrary precision library
 
 #Additional R Packages
-sudo su - -c "R -e \"install.packages('tidyverse', version='1.3.1', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('devtools', version='2.4.0', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('kableExtra', version='1.3.4', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('survival', version='3.2.10', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('survminer', version='0.4.9', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('MASS', version='7.3.53.1', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('quantreg', version='5.85', repos='http://cran.rstudio.com/')\""
-sudo su - -c "R -e \"install.packages('DescTools', version='0.99.41', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('tidyverse', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('devtools', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('kableExtra', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('survival', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('survminer', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('MASS', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('quantreg', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('DescTools', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('multidplyr', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('tictoc', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('data.table', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('haven', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('readxl', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('glue', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('naniar', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('trend', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('Epi', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('tsModel', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('broom', repos='http://cran.rstudio.com/')\""
+sudo su - -c "R -e \"install.packages('table1', repos='http://cran.rstudio.com/')\""
 
 # Wipe out all traces of provisioning files
 sudo rm -rf "/tmp/rstudio"
