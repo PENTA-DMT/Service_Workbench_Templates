@@ -288,7 +288,7 @@ def getArtifactsBucketName(commonName):
 def uploadRstudioTemplateToArtifactsBucketAndgetTheURL(bucketName):
     print('Uploading the EC2-Rstudio server template to SWB artifacts bucket')
     s3Client = boto3.client('s3')
-    objectName = 'ec2-rstudio-server.cfn.yml'
+    objectName = 'ec2-rstudio-server-penta.cfn.yml'
     bucketUrl = ''
     path = os.getcwd()
     mainPath = path.replace('/machine-images/config/infra','')
