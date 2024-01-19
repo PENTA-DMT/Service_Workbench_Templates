@@ -15,7 +15,7 @@ To install Packer 1.6.0, use [pkenv](https://github.com/iamhsa/pkenv)
 
  * Change the configuration file for AMI creation.
 Navigate to the the folder RStudio/machine-images/config/infra. <br />
-Fill the following parameters in the file configuration.json by using the parameters specific to Service Workbench deployment region.
+Fill the following parameters in the file `configuration_template.json` and rename it to `configuration_$stage.json` by using the parameters specific to Service Workbench deployment region.
 	- AWS Access key
 	- AWS Secret key
 	- Region
@@ -23,10 +23,11 @@ Fill the following parameters in the file configuration.json by using the parame
 	- Subnet
 	- AMI Name
 	- AWS Profile
+	- Kms Key Id
  * **secret.txt**: A single-line text file that contains the JWT secret from the Service Workbench deployment, which can be found in Parameter Store at /$stage/$solution/jwt/secret, where $stage is the stage name for the environment and $solution is the solution name. <br />
 **NOTE**: Add this secret.txt file to the following folder RStudio/machine-images/config/infra/files/rstudio
  * Run the packer script in the folder RStudio/machine-images/config/infra using the following command
-    - packer build -var-file=configuration.json packer-ec2-rstudio-workspace.json
+    - packer build -var-file=configuration_$stage.json packer-ec2-rstudio-workspace.json
 
 **Steps to install EC2-RStudio-Server**
 
