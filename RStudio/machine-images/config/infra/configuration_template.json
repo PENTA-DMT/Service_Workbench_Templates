@@ -6,5 +6,6 @@
     "subnetId": "",
     "amiName": "",
     "awsProfile": "",
-    "stageName": ""
+    "stageName": "",
+    "kms_key_id": ""
 }
