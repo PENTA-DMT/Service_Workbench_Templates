@@ -40,7 +40,7 @@ configuration = {}
 stackName = ""
 
 
-def formRoleName():
+def formRoleName(config_file):
     global configuration
     global stackName
     roleName = ""
@@ -49,7 +49,7 @@ def formRoleName():
     stageFileFound = False
     path = os.getcwd()
     # Make use of the configuration.json file to get proper stage file
-    with open(sys.argv[1] if sys.argv[1] else "configuration.json", "r") as file:
+    with open(config_file if config_file else "configuration.json", "r") as file:
         jsonFile = json.load(file)
         stageName = jsonFile["stageName"]
 
@@ -393,8 +393,9 @@ if __name__ == "__main__":
                 The script also looks for the role that was created during SWB installation. It needs the solutionName in the yaml file to build the role-name.
                 The script also needs the AWS region into which the SWB installation was made. It looks for the awsRegion key in the yaml file."""
         )
+        parser.add_argument("config_file")
         args = parser.parse_args()
-        roleName, stackName, commonName = formRoleName()
+        roleName, stackName, commonName = formRoleName(args.config_file)
         bucketName = getArtifactsBucketName(commonName)
         bucketUrl = uploadRstudioTemplateToArtifactsBucketAndgetTheURL(bucketName)
         stackResponse = createStack(roleName, stackName, bucketUrl)
