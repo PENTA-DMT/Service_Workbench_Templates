@@ -43,5 +43,5 @@ Fill the following parameters in the file `configuration_template.json` and rena
     * After adding the Portfolio ID to the $stage file you can run the
     following commands 	
         -  pip install -r requirements.txt  	 
-        -  python create-rstudio.py
+        -  python create-rstudio.py configuration_$stage.json
     * If the script outputs saying ‘Stack created successfully’, the EC2-RStudio-Server product should be visible in the Workspace Types screen when you login to Service Workbench as an Administrator. Otherwise you can refer to the errors that are thrown by the script and correct them accordingly.
