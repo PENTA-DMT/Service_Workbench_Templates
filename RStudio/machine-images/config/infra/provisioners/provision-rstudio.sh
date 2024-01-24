@@ -72,6 +72,8 @@ sudo sh "/usr/local/bin/set-password"
 echo '@reboot /usr/local/bin/set-password 2>&1 >> /var/log/set-password.log' >> "/tmp/crontab"
 sudo crontab "/tmp/crontab"
 
+echo $secret_file >> /var/log/secret_file_name.log
+
 # Install script that checks idle time and shuts down if max idle is reached
 sudo mv "/tmp/rstudio/check-idle" "/usr/local/bin/"
 sudo chown root: "/usr/local/bin/check-idle"

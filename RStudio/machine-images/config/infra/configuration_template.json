@@ -8,5 +8,5 @@
     "awsProfile": "",
     "stageName": "",
     "kms_key_id": "",
-    "stage": ""
+    "secret_file": ""
 }
