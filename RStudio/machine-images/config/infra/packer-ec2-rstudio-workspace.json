@@ -7,7 +7,8 @@
         "awsProfile": "",
         "awsRegion": "",
         "amiName": "",
-        "kms_key_id": ""
+        "kms_key_id": "",
+        "stage": ""
     },
     "builders": [
         {
@@ -44,7 +45,10 @@
         },
         {
             "type": "shell",
-            "script": "provisioners/provision-rstudio.sh"
+            "script": "provisioners/provision-rstudio.sh",
+            "environment_vars": [
+                "secret_file={{user `stage`}}"
+            ]
         }
     ]
 }

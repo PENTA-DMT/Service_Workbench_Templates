@@ -7,5 +7,6 @@
     "amiName": "",
     "awsProfile": "",
     "stageName": "",
-    "kms_key_id": ""
+    "kms_key_id": "",
+    "stage": ""
 }

@@ -20,4 +20,4 @@ config/infra/dev.yml
 config/infra/demo.yml
 config/infra/configuration*.json
 !config/infra/configuration_template.json
-config/infra/files/rstudio/secret.txt
+config/infra/files/rstudio/secret*

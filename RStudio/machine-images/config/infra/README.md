@@ -25,7 +25,7 @@ Fill the following parameters in the file `configuration_template.json` and rena
 	- AWS Profile
 	- Kms Key Id
  * **secret.txt**: A single-line text file that contains the JWT secret from the Service Workbench deployment, which can be found in Parameter Store at /$stage/$solution/jwt/secret, where $stage is the stage name for the environment and $solution is the solution name. <br />
-**NOTE**: Add this secret.txt file to the following folder RStudio/machine-images/config/infra/files/rstudio
+**NOTE**: Add this secret_$stage.txt file to the following folder RStudio/machine-images/config/infra/files/rstudio
  * Run the packer script in the folder RStudio/machine-images/config/infra using the following command
     - packer build -var-file=configuration_$stage.json packer-ec2-rstudio-workspace.json
 
