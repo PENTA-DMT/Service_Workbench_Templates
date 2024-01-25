@@ -61,9 +61,10 @@ sudo systemctl enable nginx
 sudo systemctl restart nginx
 
 # Install script that sets the service workbench user password at boot
-sudo mv "/tmp/rstudio/$secret_file" "/root/"
-sudo chown root: "/root/$secret_file"
-sudo chmod 600 "/root/$secret_file"
+sudo mv "/tmp/rstudio/$secret_file" "/tmp/rstudio/secret.txt"
+sudo mv "/tmp/rstudio/secret.txt" "/root/"
+sudo chown root: "/root/secret.txt"
+sudo chmod 600 "/root/secret.txt"
 sudo mv "/tmp/rstudio/set-password" "/usr/local/bin/"
 sudo chown root: "/usr/local/bin/set-password"
 sudo chmod 775 "/usr/local/bin/set-password"
